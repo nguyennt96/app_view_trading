@@ -76,7 +76,7 @@
                     }
                 },
                 {
-                    "source": "/Users/bap/Downloads/app_view_trading/android/app/src/main/res/values/styles.xml",
+                    "source": "/Users/bap/Documents/app_view_trading/android/app/src/main/res/values/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
@@ -92,25 +92,6 @@
                         "endLines": "1420,1423",
                         "endColumns": "12,12",
                         "endOffsets": "90514,90683"
-                    }
-                },
-                {
-                    "source": "/Users/bap/Downloads/app_view_trading/build/flutter_inappwebview_android/intermediates/packaged_res/debug/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,11,14",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,102,153,210,259,306,353,426,502",
-                        "endLines": "2,3,4,5,6,7,10,13,21",
-                        "endColumns": "46,50,56,48,46,46,12,12,12",
-                        "endOffsets": "97,148,205,254,301,348,421,497,949"
-                    },
-                    "to": {
-                        "startLines": "310,311,312,313,314,320,328,1414,1754",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "19961,20008,20059,20116,20165,20578,21191,90262,115971",
-                        "endLines": "310,311,312,313,314,320,330,1416,1761",
-                        "endColumns": "46,50,56,48,46,46,12,12,12",
-                        "endOffsets": "20003,20054,20111,20160,20207,20620,21259,90333,116418"
                     }
                 },
                 {
@@ -145,6 +126,25 @@
                         "startOffsets": "17554",
                         "endColumns": "59",
                         "endOffsets": "17609"
+                    }
+                },
+                {
+                    "source": "/Users/bap/Documents/app_view_trading/build/flutter_inappwebview_android/intermediates/packaged_res/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,11,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,102,153,210,259,306,353,426,502",
+                        "endLines": "2,3,4,5,6,7,10,13,21",
+                        "endColumns": "46,50,56,48,46,46,12,12,12",
+                        "endOffsets": "97,148,205,254,301,348,421,497,949"
+                    },
+                    "to": {
+                        "startLines": "310,311,312,313,314,320,328,1414,1754",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "19961,20008,20059,20116,20165,20578,21191,90262,115971",
+                        "endLines": "310,311,312,313,314,320,330,1416,1761",
+                        "endColumns": "46,50,56,48,46,46,12,12,12",
+                        "endOffsets": "20003,20054,20111,20160,20207,20620,21259,90333,116418"
                     }
                 },
                 {

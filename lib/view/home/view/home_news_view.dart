@@ -80,88 +80,87 @@ class _HomeNewViewState extends State<HomeNewView> {
             color: Colors.white,
             padding: const EdgeInsets.only(top: 18.0),
             margin: const EdgeInsets.only(top: 18.0),
-            child: Column(children: <Widget>[
-              Expanded(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    InAppWebView(
-                      key: webViewKey,
-                      initialUrlRequest:
-                          URLRequest(url: WebUri('https://cryptonews.net/')),
-                      initialSettings: InAppWebViewSettings(
-                          contentBlockers: contentBlockers),
-                      onWebViewCreated: (controller) {
-                        webViewController = controller;
-                      },
-                      onLoadStart: (controller, url) {
-                        setState(() {
-                          isLoading = true;
-                        });
-                      },
-                      onLoadStop: (controller, url) async {
-                        setState(() {
-                          webViewController!.evaluateJavascript(
-                              source: """
-                              window.addEventListener('DOMContentLoaded', function(event) { 
-                                \$('header').remove();
-                                \$('.download_the_app').remove();
-                                \$('footer').remove();
-                                \$('.footer').remove();
-                                \$('.vert').remove(); 
-                                \$('noindex').remove();     
-                                \$('.article-source-link').remove();       
-                                \$('#top-coins').remove();        
-                                \$('.top-coins-title').remove();       
-                                \$('.info').remove();   
-                                \$('.cookies_processing').remove();
-                              });
-                              """);
-                          isLoading = false;
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                InAppWebView(
+                  key: webViewKey,
+                  initialUrlRequest:
+                      URLRequest(url: WebUri('https://cryptonews.net/')),
+                  initialSettings: InAppWebViewSettings(
+                      contentBlockers: contentBlockers),
+                  onWebViewCreated: (controller) {
+                    webViewController = controller;
+                  },
+                  onLoadStart: (controller, url) {
+                    setState(() {
+                      isLoading = true;
+                    });
+                  },
+                  onLoadStop: (controller, url) async {
+                    setState(() {
+                      webViewController!.evaluateJavascript(
+                          source: """
+                          window.addEventListener('DOMContentLoaded', function(event) { 
+                            \$('header').remove();
+                            \$('.download_the_app').remove();
+                            \$('footer').remove();
+                            \$('.footer').remove();
+                            \$('.vert').remove(); 
+                            \$('noindex').remove();     
+                            \$('.article-source-link').remove();       
+                            \$('#top-coins').remove();        
+                            \$('.top-coins-title').remove();       
+                            \$('.info').remove();   
+                            \$('.cookies_processing').remove();
+                             \$('div').removeAttr('ng-include')
+                            \$('div').removeAttr('ng-if')
 
-                        });
-                      }, 
-                      shouldOverrideUrlLoading:
-                          (controller, navigationAction) async {
-                        final uri = navigationAction.request.url!;
-                        if (uri.toString().contains('cryptonews.net')) {
-                          return NavigationActionPolicy.ALLOW;
-                        }
-                        return NavigationActionPolicy.CANCEL;
-                      },
-                      initialUserScripts: UnmodifiableListView([
-                        UserScript(
-                            source: """
-                      window.addEventListener('DOMContentLoaded', function(event) { 
-                        \$('header').remove();
-                        \$('.download_the_app').remove();
-                        \$('footer').remove();
-                        \$('.footer').remove();
-                        \$('.vert').remove(); 
-                        \$('noindex').remove();     
-                        \$('.article-source-link').remove();       
-                        \$('#top-coins').remove();        
-                        \$('.top-coins-title').remove();       
-                        \$('.info').remove();   
-                        \$('.cookies_processing').remove();
-                      });
-                      """,
-                            injectionTime:
-                                UserScriptInjectionTime.AT_DOCUMENT_START)
-                      ]),
-                    ),
-                    if (isLoading)
-                    Expanded(
-                      child: Container(
-                        color: Colors.white,
-                        child: const Center(
-                          child: CircularProgressIndicator(),),
-                      ),
-                    )
-                  ],
+                          });
+                          """);
+                      isLoading = false;
+                
+                    });
+                  }, 
+                  shouldOverrideUrlLoading:
+                      (controller, navigationAction) async {
+                    final uri = navigationAction.request.url!;
+                    if (uri.toString().contains('cryptonews.net')) {
+                      return NavigationActionPolicy.ALLOW;
+                    }
+                    return NavigationActionPolicy.CANCEL;
+                  },
+                  initialUserScripts: UnmodifiableListView([
+                    UserScript(
+                        source: """
+                  window.addEventListener('DOMContentLoaded', function(event) { 
+                    \$('header').remove();
+                    \$('.download_the_app').remove();
+                    \$('footer').remove();
+                    \$('.footer').remove();
+                    \$('.vert').remove(); 
+                    \$('noindex').remove();     
+                    \$('.article-source-link').remove();       
+                    \$('#top-coins').remove();        
+                    \$('.top-coins-title').remove();       
+                    \$('.info').remove();   
+                    \$('.cookies_processing').remove();
+                  \$('div').removeAttr('ng-include')
+                            \$('div').removeAttr('ng-if')
+                  });
+                  """,
+                        injectionTime:
+                            UserScriptInjectionTime.AT_DOCUMENT_START)
+                  ]),
                 ),
-              ),
-            ]),
+                if (isLoading)
+                Container(
+                  color: Colors.white,
+                  child: const Center(
+                    child: CircularProgressIndicator(),),
+                )
+              ],
+            ),
           ))),
     );
   }
